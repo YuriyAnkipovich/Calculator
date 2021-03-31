@@ -6,36 +6,33 @@ $(document).ready(function(){
 
 function add_calculator()
 {
-    var html_body = $('<html><body></body></html>');
-	var main_div = $('<div class="calculator"></div>');
-	var	form_div = $('<div class="item input"></div>');
-	var form = $('<form name="form"><input type="text" name="out" readonly></form>');
-	form_div = form.wrap(form_div);
+    var id = $('.calculator').length;
+	var main_div = $('<div class="calculator" id="' + id + '"></div>');
+	var form = $('<div class="item input"><form name="form"><input class="out" type="text" name="out" readonly></form></div>');
 	var buttons = $(
-        '<div class="item clean" onclick="clean()" data-toggle="tooltip" title="Очистить всё" data-placement="bottom">C</div>' +  
-        '<div class="item delete" onclick="delete_last()" data-toggle="tooltip" title="Удалить последний символ" data-placement="bottom">&larr;</div>' +  
-        '<div class="item" onclick="insert(\'+\')">+</div>' +  
-        '<div class="item" onclick="insert(\'-\')">-</div>' +  
-        '<div class="item" onclick="insert(\'*\')">&times;</div>' +  
-        '<div class="item" onclick="insert(\'/\')">&divide;</div>' +  
-        '<div class="item" onclick="insert(\'3\')">3</div>' + 
-        '<div class="item" onclick="insert(\'7\')">7</div>' + 
-        '<div class="item" onclick="insert(\'8\')">8</div>' + 
-        '<div class="item" onclick="insert(\'9\')">9</div>' + 
-        '<div class="item" onclick="insert(\'(\')">(</div>' + 
-        '<div class="item" onclick="insert(\'4\')">4</div>' + 
-        '<div class="item" onclick="insert(\'5\')">5</div>' + 
-        '<div class="item" onclick="insert(\'6\')">6</div>' + 
-        '<div class="item" onclick="insert(\')\')">)</div>' + 
-        '<div class="item" onclick="insert(\'1\')">1</div>' + 
-        '<div class="item" onclick="insert(\'2\')">2</div>' + 
-        '<div class="item equal" onclick="equal()" data-toggle="tooltip" title="Перед нажатием проверьте корректность введёного вами выражения" data-placement="bottom">=</div>' + 
-        '<div class="item zero" onclick="insert(\'0\')">0</div>' +
-        '<div class="item" onclick="insert(\'.\')">.</div>');
-    main_div = form_div.append(buttons).wrap(main_div);
-    var script = $('<script src="js/calculator.js" type="text/javascript"></script>');
-    html_body = main_div.append(script).wrap(html_body);
+        '<div class="item clean" onclick="calculator.clean(' + id + ')" data-toggle="tooltip" title="Очистить всё" data-placement="bottom">C</div>' +  
+        '<div class="item delete" onclick="calculator.delete_last()" data-toggle="tooltip" title="Удалить последний символ" data-placement="bottom">&larr;</div>' +  
+        '<div class="item" onclick="calculator.insert(' + id + ', \'+\')">+</div>' +  
+        '<div class="item" onclick="calculator.insert(' + id + ', \'-\')">-</div>' +  
+        '<div class="item" onclick="calculator.insert(' + id + ', \'*\')">&times;</div>' +  
+        '<div class="item" onclick="calculator.insert(' + id + ', \'/\')">&divide;</div>' +  
+        '<div class="item" onclick="calculator.insert(' + id + ', \'7\')">7</div>' + 
+        '<div class="item" onclick="calculator.insert(' + id + ', \'8\')">8</div>' + 
+        '<div class="item" onclick="calculator.insert(' + id + ', \'9\')">9</div>' + 
+        '<div class="item" onclick="calculator.insert(' + id + ', \'(\')">(</div>' + 
+        '<div class="item" onclick="calculator.insert(' + id + ', \'4\')">4</div>' + 
+        '<div class="item" onclick="calculator.insert(' + id + ', \'5\')">5</div>' + 
+        '<div class="item" onclick="calculator.insert(' + id + ', \'6\')">6</div>' + 
+        '<div class="item" onclick="calculator.insert(' + id + ', \')\')">)</div>' + 
+        '<div class="item" onclick="calculator.insert(' + id + ', \'1\')">1</div>' + 
+        '<div class="item" onclick="calculator.insert(' + id + ', \'2\')">2</div>' + 
+        '<div class="item" onclick="calculator.insert(' + id + ', \'3\')">3</div>' +
+        '<div class="item equal" onclick="calculator.equal(' + id + ')" data-toggle="tooltip" title="Перед нажатием проверьте корректность введёного вами выражения" data-placement="bottom">=</div>' + 
+        '<div class="item zero" onclick="calculator.insert(' + id + ', \'0\')">0</div>' +
+        '<div class="item" onclick="calculator.insert(' + id + ', \'.\')">.</div>');
+    main_div.append(form, buttons);
 
-    $('html').after(html_body);
+
+    $('.maindiv').after(main_div);
 }
 

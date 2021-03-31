@@ -4,25 +4,27 @@ var calculator = {
     count_right_braces: 0,
     is_click_equal: false,
 
-    insert: function(value) {
-        var current_value = form.out.value;
+    insert: function(id, value) {
+        var out = $('#' + id + ' > .input > form > .out');
+        var current_value = out.val();
         var last = current_value[current_value.length - 1];
 
-        if (is_click_equal && !isNaN(parseInt(value))) {
+        if (this.is_click_equal && !isNaN(parseInt(value))) {
             current_value = "";
         }
 
-        is_click_equal = false;
+        this.is_click_equal = false;
 
         if (current_value.length == 20)
             return;
 
         if (value == "." && (isNaN(parseInt(last)) || current_value == "")) {
             if (last == ".") {
-                //alert("Syntax error: äâå òî÷êè ïîäðÿä çàïðåùåíû!");
+                //alert("Syntax error: Ð´Ð²Ðµ Ñ‚Ð¾Ñ‡ÐºÐ¸ Ð¿Ð¾Ð´Ñ€ÑÐ´ Ð·Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½Ñ‹!");
                 return;
             }
             current_value = current_value + "0";
+            last = "0";
         }
 
         var operators = /[\+\-\*/]/;
@@ -35,26 +37,28 @@ var calculator = {
                 if (last.match(operators) != value)
                     current_value = current_value.slice(0, current_value.length - 1);
                 else
-                    //alert("Syntax error: äâå îïåðàöèè ïîäðÿä çàïðåùåíû!");
+                    //alert("Syntax error: Ð´Ð²Ðµ Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸ Ð¿Ð¾Ð´Ñ€ÑÐ´ Ð·Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½Ñ‹!");
                     return;
             }
 
             if ((value == "/" || value == "*") && last == "(") {
-                //alert("Syntax error: Íåëüçÿ ñòàâèòü çíàê äåëåíèÿ/óìíîæåíèÿ ïîñëå îòêðûâàþùåé ñêîáêè!");
+                //alert("Syntax error: ÐÐµÐ»ÑŒÐ·Ñ ÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ Ð·Ð½Ð°Ðº Ð´ÐµÐ»ÐµÐ½Ð¸Ñ/ÑƒÐ¼Ð½Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð¿Ð¾ÑÐ»Ðµ Ð¾Ñ‚ÐºÑ€Ñ‹Ð²Ð°ÑŽÑ‰ÐµÐ¹ ÑÐºÐ¾Ð±ÐºÐ¸!");
                 return;
             }
 
             if (last.match(operators) && value == ")") {
-                //alert("Syntax error: Íåëüçÿ ñòàâèòü çíàê îïåðàöèè ïåðåä çàêðûâàþùåé ñêîáêîé!");
+                //alert("Syntax error: ÐÐµÐ»ÑŒÐ·Ñ ÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ Ð·Ð½Ð°Ðº Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸ Ð¿ÐµÑ€ÐµÐ´ Ð·Ð°ÐºÑ€Ñ‹Ð²Ð°ÑŽÑ‰ÐµÐ¹ ÑÐºÐ¾Ð±ÐºÐ¾Ð¹!");
                 return;
             }
 
             if (value == "(" && last.match(regV_2)) {
                 current_value = current_value + "*";
+                last = "*";
             }
 
             if (last == ")" && value.match(regV_3)) {
                 current_value = current_value + "*";
+                last = "*";
             }
         } else {
             if (value == "*" || value == "/")
@@ -62,42 +66,45 @@ var calculator = {
         }
 
         if (value == "(") {
-            count_left_braces++;
+            this.count_left_braces++;
         }
 
         if (value == ")") {
             if (last == "(") {
-                //alert("Syntax error: ïóñòûå ñêîáêè çàïðåùåíû!");
+                //alert("Syntax error: Ð¿ÑƒÑÑ‚Ñ‹Ðµ ÑÐºÐ¾Ð±ÐºÐ¸ Ð·Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½Ñ‹!");
                 return;
             }
-            if (count_left_braces == count_right_braces) {
-                //alert("Syntax error: êîëè÷åñòâî çàêðûâàþùèõ ñêîáîê íå äîëæíî ïðèâûøàòü êîëè÷åñòâî îòêðûâàþùèõ!");
+            if (this.count_left_braces == this.count_right_braces) {
+                //alert("Syntax error: ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð·Ð°ÐºÑ€Ñ‹Ð²Ð°ÑŽÑ‰Ð¸Ñ… ÑÐºÐ¾Ð±Ð¾Ðº Ð½Ðµ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð¿Ñ€Ð¸Ð²Ñ‹ÑˆÐ°Ñ‚ÑŒ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¾Ñ‚ÐºÑ€Ñ‹Ð²Ð°ÑŽÑ‰Ð¸Ñ…!");
                 return;
             }
-            count_right_braces++;
+            this.count_right_braces++;
         }
 
 
-        new_value = current_value + value;
-        form.out.value = new_value;
+        var new_value = current_value + value;
+        out.val(new_value);
     },
 
-    clean: function() {
-        document.form.out.value = "";
+    clean: function(id) {
+        var out = $('#' + id + ' > .input > form > .out');
+        out.val('');
     },
 
-    delete_last: function() {
-        var current_value = document.form.out.value;
+    delete_last: function(id) {
+        var out = $('#' + id + ' > .input > form > .out');
+        var current_value = out.val();
 
-        document.form.out.value = current_value.slice(0, current_value.length - 1);
+        out.val(current_value.slice(0, current_value.length - 1));
     },
 
 
-    equal: function() {
-        current_value = document.form.out.value;
+    equal: function(id) {
+        var out = $('#' + id + ' > .input > form > .out');
+        current_value = out.val();
 
         if (current_value) {
-            document.form.out.value = eval(current_value).toFixed(4);
+            out.val(eval(current_value).toFixed(4));
             is_click_equal = true;
         }
     },
