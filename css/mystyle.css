@@ -43,10 +43,6 @@ body {
     font-family: FontAwesome;
 }
 
-.my-hidden {
-    display: none;
-}
-
 p {
     display: flex;
     justify-content: center;

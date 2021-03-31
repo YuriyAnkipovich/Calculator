@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>Калькулятор</title>
@@ -8,43 +9,16 @@
     <link href="css/mystyle.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="js/script.js" type="text/javascript"></script>
 </head>
+
 <body>
     <div class="maindiv" id="main_div">
         <div id="start">
-            <a onclick="start()" class="button-add" data-toggle="tooltip" title="При нажатии на кнопку появится ещё один калькулятор" data-placement="bottom">
+            <a onclick="add_calculator()" class="button-add" data-toggle="tooltip" title="При нажатии на кнопку появится ещё один калькулятор" data-placement="bottom">
                 <i class="fas fa-calculator"></i>Добавить калькулятор
             </a>
         </div>
-        <div class="text my-hidden">
-            <p>Это калькулятор, написанные на JavaScript. Разработчик: Анкипович Юрий Сергеевич.</p>
-            <p>Данный калькулятор реализует все базовые функции, а также преоритет опрераций.</p>
-            <p>Ввод ограничен 20 символами, будте внимательны.</p>
-        </div>
-        <div class="calculator my-hidden">
-            <div class="item input"> <form name="form"><input type="text" name="out" readonly></form></div>
-            <div class="item clean" onclick="clean()" data-toggle="tooltip" title="Очистить всё" data-placement="bottom">C</div>
-            <div class="item delete" onclick="delete_last()" data-toggle="tooltip" title="Удалить последний символ" data-placement="bottom">&larr;</div>
-            <div class="item" onclick="insert('+')">+</div>
-            <div class="item" onclick="insert('-')">-</div>
-            <div class="item" onclick="insert('*')">&times;</div>
-            <div class="item" onclick="insert('/')">&divide;</div>
-            <div class="item" onclick="insert('7')">7</div>
-            <div class="item" onclick="insert('8')">8</div>
-            <div class="item" onclick="insert('9')">9</div>
-            <div class="item" onclick="insert('(')">(</div>
-            <div class="item" onclick="insert('4')">4</div>
-            <div class="item" onclick="insert('5')">5</div>
-            <div class="item" onclick="insert('6')">6</div>
-            <div class="item" onclick="insert(')')">)</div>
-            <div class="item" onclick="insert('1')">1</div>
-            <div class="item" onclick="insert('2')">2</div>
-            <div class="item" onclick="insert('3')">3</div>
-            <div class="item equal" onclick="equal()" data-toggle="tooltip" title="Перед нажатием проверьте корректность введёного вами выражения" data-placement="bottom">=</div>
-            <div class="item zero" onclick="insert('0')">0</div>
-            <div class="item" onclick="insert('.')">.</div>
-        </div>
     </div>
-    <script src="js/script.js" type="text/javascript"></script>
 </body>
 </html>
