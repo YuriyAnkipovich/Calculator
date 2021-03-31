@@ -1,11 +1,17 @@
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip({
+	container: "body"
+  });   
+});
 var count_left_braces = 0, count_right_braces = 0;
 var is_click_equal = false;
+
 
 function start()
 {
 	$(".hidden").show();
 	$(".calculator").css("display", "grid");
-	$(".start_button").hide();
+	return;
 }
 
 function insert(value)
