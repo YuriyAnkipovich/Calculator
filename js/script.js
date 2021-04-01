@@ -10,9 +10,9 @@ var main = {
 
     add_calculator : function()
     {
-        if (this.free_ids)
+        if (this.free_ids.length == 0)
         {
-            max = Math.max(this.busy_ids);
+            max = Math.max.apply(null, this.busy_ids);
             for (i = 1; i < 6; i++)
                 this.free_ids.push(max + i);
         }
