@@ -5,7 +5,7 @@ var calculator = {
     is_click_equal: false,
 
     insert: function(id, value) {
-        var out = $('#' + id + ' > .input > form > .out');
+        var out = $('#' + id + ' > .calculator > .input > form > .out');
         var current_value = out.val();
         var last = current_value[current_value.length - 1];
 
@@ -87,12 +87,12 @@ var calculator = {
     },
 
     clean: function(id) {
-        var out = $('#' + id + ' > .input > form > .out');
+        var out = $('#' + id + ' > .calculator > .input > form > .out');
         out.val('');
     },
 
     delete_last: function(id) {
-        var out = $('#' + id + ' > .input > form > .out');
+        var out = $('#' + id + ' > .calculator > .input > form > .out');
         var current_value = out.val();
 
         out.val(current_value.slice(0, current_value.length - 1));
@@ -100,7 +100,7 @@ var calculator = {
 
 
     equal: function(id) {
-        var out = $('#' + id + ' > .input > form > .out');
+        var out = $('#' + id + ' > .calculator > .input > form > .out');
         current_value = out.val();
 
         if (current_value) {
