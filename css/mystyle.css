@@ -6,7 +6,9 @@ body {
 }
 
 
-#start > a, #start > a:active, #start > a:hover {
+#start > a,
+#start > a:active,
+#start > a:hover {
     all: initial;
     display: flex;
     justify-content: center;
