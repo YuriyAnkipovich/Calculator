@@ -1,128 +1,44 @@
 body {
     background: radial-gradient(circle, skyblue, steelblue);
-    user-select: none;
-    justify-content: center;
-    align-items: center;
 }
 
-
-#start > a,
-#start > a:active,
-#start > a:hover {
-    all: initial;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    background-color: #00ffff;
-    width: 360px;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 30px;
+body, h1, h2, h3, h4, h5, h6 {
     font-family: FontAwesome;
-    cursor: pointer;
 }
 
 .window {
-    padding: 4px;
-    border-radius: 5px;
     max-width: 360px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
+    margin-top: 10px;
+    background-color: black
+}
+
+.panel-body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.form-group {
+    padding: 0px;
+    margin: 0px;
+}
+
+.out {
     font-family: FontAwesome;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .fa-calculator {
     padding-right: 20px;
 }
 
+.equal
+{
+    padding: 42px 0px 42px 0px;
+}
+
 .tooltip {
     font-size: 16px;
     font-family: FontAwesome;
-}
-
-.calculator {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 4px;
-    background-color: #212121;
-    padding: 4px;
-    border-radius: 5px;
-    max-width: 360px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: FontAwesome;
-}
-
-.fa-window-close {
-    position: relative;
-    top: 30px;
-    right: 0px;
-    font-size: 26px;
-    cursor: pointer;
-    z-index: 999;
-}
-
-p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: FontAwesome;
-}
-
-.item {
-    background-color: #00ffff;
-    color: #000000;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 22px;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: FontAwesome;
-}
-
-form {
-    max-width: 100%
-}
-
-input {
-    width: 100%;
-    height: 60px;
-    border: none;
-    font-size: 30px;
-    font-family: FontAwesome;
-    outline: none;
-    text-align: right;
-    padding: 0;
-    cursor: default;
-}
-
-.input {
-    grid-column: 1/-1;
-    padding: 0;
-}
-
-.clean {
-    grid-column: 1/3;
-    background-color: #0026ff
-}
-
-.delete {
-    grid-column: 3/-1;
-    background-color: #0094ff
-}
-
-.zero {
-    grid-column: 1/3;
-}
-
-.equal {
-    grid-column: 4;
-    grid-row: 6/8;
-    background-color: #00ff90
 }
